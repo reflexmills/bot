@@ -15,9 +15,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Конфигурация
-ADMIN_ID = 6402443549  # Замените на ваш ID
-BOT_TOKEN = "7608142091:AAG8ODlzkFfu1a_1MnzJzqg41yjdWq3fHqE"  # Ваш токен
+import os
+from dotenv import load_dotenv
+
+# Загружаем переменные из .env
+load_dotenv()
+
+# Получаем значения
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
