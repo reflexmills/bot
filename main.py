@@ -47,7 +47,7 @@ async def start_handler(message: types.Message):
     await message.answer(
         "👋 Привет! Я бот для связи с администратором.\n\n"
         "Просто напишите ваш вопрос, и я перешлю его админу.\n"
-        "Поддержка: @Luxxxll"
+        "Создан при поддержке @Luxxxll"
     )
 
 @dp.message(F.chat.type == "private", ~F.from_user.id == ADMIN_ID)
