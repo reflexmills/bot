@@ -153,15 +153,17 @@ async def fallback_handler(message: types.Message):
     else:
         await message.answer("ℹ️ Неизвестная команда. Используйте /start")
         
-async def main():
-    """Запуск бота"""
-    await dp.start_polling(bot, skip_updates=True)
+import asyncio
+import logging
 
-if __name__ == "__main__":
-    import asyncio
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("Бот остановлен")
-    except Exception as e:
-        logger.critical(f"Критическая ошибка: {e}")
+async def main():
+    while True:  # Бесконечный цикл
+        try:
+            await dp.start_polling(bot, skip_updates=True)
+        except Exception as e:
+            logging.error(f"Ошибка: {e}. Перезапуск через 5 секунд...")
+            await asyncio.sleep(5)  # Пауза перед перезапуском
+
+if name == "main":
+    logging.basicConfig(level=logging.INFO)
+    asyncio.run(main())
