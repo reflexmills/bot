@@ -164,6 +164,6 @@ async def main():
             logging.error(f"Ошибка: {e}. Перезапуск через 5 секунд...")
             await asyncio.sleep(5)  # Пауза перед перезапуском
 
-if name == "main":
+if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     asyncio.run(main())
